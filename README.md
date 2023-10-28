@@ -2,7 +2,7 @@
 ResumeParser Web Application
 
 
-step1:create Register Page
+step1:create Register Page(Connect User Details To FireBase)
       
       
       
@@ -24,11 +24,20 @@ step1:create Register Page
       
       
       
-      
-      
-      
-      ![image](https://github.com/sures-123/Task-10/assets/108910767/2086d2b7-6e97-4146-8a3c-f8fc77dc9cb4)
-
-
 Step2: Create Login Page
-step3: 
+
+
+
+
+
+
+
+
+step3: Password Reset Page
+
+
+Step4: Create ResumeUploader Page
+
+
+Step5: Create homepage (in this page logout & resumer buttons placed)
+
