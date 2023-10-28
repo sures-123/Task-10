@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+
+    <title>Forgot Password UI Using CSS - @code.scientist x @codingtorque</title>
+</head>
+
+<body>
+    <div class="card">
+        <p class="lock-icon"><i class="fas fa-lock"></i></p>
+        <h2>Forgot Password?</h2>
+        <p>You can reset your Password here</p>
+        <input type="text" class="passInput" placeholder="Email address" id="email">
+        <button style="cursor: pointer;" id="sendmypassword" onclick="send()">Reset Password</button><br><br>
+        <button><a href='C:\Users\durga.gollu\OneDrive - Nimble Accounting\Desktop\login-form-18\login.html' style="text-decoration:none; color:white;">Login</a></button>
+    </div>
+    
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPasswordResetEmail,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBLlWcRBHLkArTqVljlZjR_tC1XYdOdCyg",
+      authDomain: "resumepaser.firebaseapp.com",
+      projectId: "resumepaser",
+      storageBucket: "resumepaser.appspot.com",
+      messagingSenderId: "1002607890997",
+      appId: "1:1002607890997:web:afcc060cb7e123efaa977c",
+      measurementId: "G-QFY4GSWP5E"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    //console.log(app);
+    sendmypassword.addEventListener('click',(e)=>{
+      var email=document.getElementById('email').value;
+      
+      sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Password reset email sent!
+        // ..
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        // ..
+      });
+    })
+
+    function send(){
+        alert("A link sent to your mail change your new password");
+    }
+    </script>
+    <script>
+        function send(){
+            alert("A link sent to your mail change your new password");
+        }
+    </script>
+    </html>

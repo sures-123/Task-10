@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+  <section class="ftco-section">
+    <form onsubmit="event.preventDefault(); handleLogin();">
+      <div class="container">
+        <div class="row justify-content-center">
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-5">
+            <div class="login-wrap p-4 p-md-5">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <span class="fa fa-user-o"></span>
+              </div>
+              <h3 class="text-center mb-4">Have an account?</h3>
+              <form action="#" class="login-form">
+                <div class="form-group">
+                  <input type="text" id="email" class="form-control rounded-left" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group d-flex">
+                  <input type="password" id="password" class="form-control rounded-left" id="password" placeholder="Password" required>
+                </div>
+                <div class="form-group d-md-flex">
+                  <div class="w-50">
+                    <a href="register.html" class="checkbox-wrap checkbox-primary"> Register </a>
+                  </div>
+                  <div class="w-50 text-md-right">
+                    <a href="C:/Users/durga.gollu/OneDrive - Nimble Accounting/Desktop/login-form-18/css/reset.html">Forgot Password</a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary rounded submit p-3 my-5 px-5" id="login">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+  
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBLlWcRBHLkArTqVljlZjR_tC1XYdOdCyg",
+    authDomain: "resumepaser.firebaseapp.com",
+    projectId: "resumepaser",
+    storageBucket: "resumepaser.appspot.com",
+    messagingSenderId: "1002607890997",
+    appId: "1:1002607890997:web:afcc060cb7e123efaa977c",
+    measurementId: "G-QFY4GSWP5E"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth();
+  //console.log(app);
+  login.addEventListener('click',(e)=>{
+    var email=document.getElementById('email').value;
+    var password=document.getElementById('password').value;
+   signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      const email = user.email
+      const userDetails = JSON.stringify(user);
+      localStorage.setItem("userdetails",email)
+      console.log(userDetails.email)
+      window.location.href = "home.html";
+      alert("SignIn successfully!!");
+  })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+
+  });
+  const user = auth.currentUser;
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+  login.addEventListener('click',(e)=>{
+    signOut(auth).then(() => {
+    
+      alert("user logout");
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+    
+  })
+
+
+  </script>
+  
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</html>

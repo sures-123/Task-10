@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="boxicons/css/boxicons.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="home.css">
+    <title>HomePage</title>
+</head>
+<body>
+ <div class="wrapper">
+    <nav class="nav">
+        <!--<div class="nav-logo">
+            <p>LOGO .</p>
+        </div>-->
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#" class="link active">Home</a></li>
+
+                <p id="constantValue" style="color: white;"> </p>
+               
+            </ul>
+        </div>
+        <div class="nav-button">
+           <!---- <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>-->
+            <button class="btn" id="registerBtn" onclick="Logout()"><a href="login.html">Logout</a></button>
+            
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+        
+    </nav>
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        <button class="btn" id="registerBt" onclick="showAlert()"><a href="index2.html">Resumer</a></button>
+        
+</div>
+  
+<script>
+    const email = localStorage.getItem('userdetails');
+    const name=email.split("@");
+    const pElement = document.getElementById("constantValue");
+    const marqueeElement = document.createElement("marquee");
+    const marqueeContainer = document.createElement("div");
+    marqueeContainer.style.display = "flex";
+    //marqueeContainer.style.justifyContent = "center";
+    marqueeElement.setAttribute("direction","left");
+    marqueeElement.innerHTML =`<span style="color: skyblue; font-weight: bold;font-family: 'Times New Roman', Times, serif;"">Welcome ${name[0]}</span>`;
+    marqueeContainer.appendChild(marqueeElement);
+    pElement.appendChild(marqueeElement);
+    const queryParams = new URLSearchParams(window.location.search);
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+ 
+</script>
+<script>
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+    function register() {
+        localStorage.removeItem('userdetails')
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+</script>
+<script>
+    function showAlert() {
+        alert("Successfully Enter In To The your Resume Uploader Page!");
+    }
+</script>
+</body>
+</html>
