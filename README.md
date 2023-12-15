@@ -1,5 +1,5 @@
-# Task-10
-ResumeParser Web Application
+
+#ResumeParser Web Application
 
 
 step1:create Register Page(Connect User Details To FireBase)
